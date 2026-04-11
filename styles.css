@@ -1,5 +1,99 @@
 body {
-  background-color: #020617;
-  color: #e2e8f0;
+  margin: 0;
   font-family: Arial, sans-serif;
+  background: #020617;
+  color: #e2e8f0;
+}
+
+nav {
+  display: flex;
+  justify-content: space-between;
+  padding: 20px;
+  background: #020617;
+  border-bottom: 1px solid #1e293b;
+}
+
+nav a {
+  color: #38bdf8;
+  margin-left: 15px;
+  text-decoration: none;
+}
+
+.hero {
+  text-align: center;
+  padding: 80px 20px;
+}
+
+.hero h2 {
+  font-size: 2rem;
+}
+
+.buttons a {
+  display: inline-block;
+  margin: 10px;
+  padding: 10px 20px;
+  background: #38bdf8;
+  color: black;
+  border-radius: 5px;
+  text-decoration: none;
+}
+
+section {
+  padding: 40px;
+}
+
+.card {
+  background: #020617;
+  border: 1px solid #1e293b;
+  padding: 20px;
+  margin-bottom: 20px;
+  border-radius: 8px;
+  transition: 0.3s;
+}
+
+.card:hover {
+  border-color: #38bdf8;
+  transform: translateY(-3px);
+}
+
+.highlight {
+  border-color: #22c55e;
+}
+
+.skills {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+.skills span {
+  background: #1e293b;
+  padding: 8px 12px;
+  border-radius: 5px;
+}
+
+form {
+  display: flex;
+  flex-direction: column;
+  max-width: 400px;
+}
+
+form input, form textarea {
+  margin-bottom: 10px;
+  padding: 10px;
+  border: none;
+  border-radius: 5px;
+}
+
+form button {
+  padding: 10px;
+  background: #38bdf8;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.note {
+  font-size: 0.8rem;
+  color: #64748b;
 }
