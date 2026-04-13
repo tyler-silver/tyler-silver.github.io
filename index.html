@@ -1,135 +1,1228 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <title>Tyler Argent | Cybersecurity</title>
-  <link rel="stylesheet" href="styles.css">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Tyler Argent | IT Support Analyst | Cybersecurity Portfolio</title>
+  <meta name="description" content="Tyler Argent's cybersecurity and IT portfolio featuring support, compliance, IAM, cloud, and homelab projects." />
+  <style>
+    :root {
+      --bg: #071018;
+      --bg-2: #0b1623;
+      --panel: rgba(14, 25, 39, 0.82);
+      --panel-strong: rgba(16, 31, 49, 0.95);
+      --line: rgba(110, 194, 255, 0.18);
+      --line-2: rgba(89, 168, 255, 0.35);
+      --text: #e8f3ff;
+      --muted: #98adc2;
+      --accent: #58c4ff;
+      --accent-2: #8a5bff;
+      --success: #63f5b0;
+      --warn: #ffd166;
+      --shadow: 0 20px 60px rgba(0, 0, 0, 0.35);
+      --radius: 22px;
+      --radius-sm: 14px;
+      --max: 1180px;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      background:
+        radial-gradient(circle at 20% 20%, rgba(88, 196, 255, 0.14), transparent 25%),
+        radial-gradient(circle at 80% 0%, rgba(138, 91, 255, 0.14), transparent 22%),
+        linear-gradient(180deg, #050b13 0%, #071018 40%, #050b13 100%);
+      color: var(--text);
+      line-height: 1.6;
+      overflow-x: hidden;
+    }
+
+    body::before {
+      content: "";
+      position: fixed;
+      inset: 0;
+      background-image:
+        linear-gradient(rgba(88, 196, 255, 0.04) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(88, 196, 255, 0.04) 1px, transparent 1px);
+      background-size: 36px 36px;
+      mask-image: linear-gradient(to bottom, rgba(0,0,0,0.35), rgba(0,0,0,0.1));
+      pointer-events: none;
+      z-index: -2;
+    }
+
+    .orb {
+      position: fixed;
+      width: 520px;
+      height: 520px;
+      border-radius: 50%;
+      filter: blur(90px);
+      opacity: 0.17;
+      z-index: -1;
+      pointer-events: none;
+      animation: drift 14s ease-in-out infinite alternate;
+    }
+
+    .orb.one {
+      background: var(--accent);
+      top: -120px;
+      left: -140px;
+    }
+
+    .orb.two {
+      background: var(--accent-2);
+      right: -180px;
+      top: 240px;
+      animation-duration: 18s;
+    }
+
+    @keyframes drift {
+      from { transform: translate3d(0, 0, 0) scale(1); }
+      to { transform: translate3d(30px, 24px, 0) scale(1.08); }
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    img {
+      max-width: 100%;
+      display: block;
+    }
+
+    .container {
+      width: min(calc(100% - 32px), var(--max));
+      margin: 0 auto;
+    }
+
+    .topbar {
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      backdrop-filter: blur(18px);
+      background: rgba(4, 10, 16, 0.7);
+      border-bottom: 1px solid rgba(88, 196, 255, 0.08);
+    }
+
+    .topbar-inner {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 16px 0;
+      gap: 20px;
+    }
+
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      font-weight: 800;
+      letter-spacing: 0.04em;
+    }
+
+    .brand-mark {
+      width: 42px;
+      height: 42px;
+      border-radius: 12px;
+      border: 1px solid var(--line-2);
+      background: linear-gradient(135deg, rgba(88,196,255,0.16), rgba(138,91,255,0.2));
+      display: grid;
+      place-items: center;
+      box-shadow: inset 0 0 20px rgba(88,196,255,0.08);
+      color: var(--accent);
+      font-size: 0.9rem;
+    }
+
+    nav ul {
+      list-style: none;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 14px;
+      align-items: center;
+    }
+
+    nav a {
+      color: var(--muted);
+      font-size: 0.95rem;
+      transition: color 0.2s ease, transform 0.2s ease;
+    }
+
+    nav a:hover,
+    nav a.active {
+      color: var(--text);
+      transform: translateY(-1px);
+    }
+
+    .nav-cta {
+      padding: 10px 16px;
+      border-radius: 999px;
+      border: 1px solid var(--line-2);
+      background: rgba(88, 196, 255, 0.08);
+    }
+
+    .hero {
+      padding: 76px 0 40px;
+    }
+
+    .hero-grid {
+      display: grid;
+      grid-template-columns: 1.2fr 0.8fr;
+      gap: 28px;
+      align-items: stretch;
+    }
+
+    .panel {
+      background: var(--panel);
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      box-shadow: var(--shadow);
+      backdrop-filter: blur(12px);
+    }
+
+    .hero-copy {
+      padding: 36px;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .hero-copy::after {
+      content: "";
+      position: absolute;
+      width: 240px;
+      height: 240px;
+      right: -60px;
+      top: -80px;
+      background: radial-gradient(circle, rgba(88,196,255,0.18), transparent 62%);
+      pointer-events: none;
+    }
+
+    .eyebrow {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      font-size: 0.88rem;
+      color: var(--success);
+      border: 1px solid rgba(99, 245, 176, 0.15);
+      border-radius: 999px;
+      padding: 8px 14px;
+      background: rgba(99, 245, 176, 0.05);
+      margin-bottom: 18px;
+    }
+
+    .hero h1 {
+      font-size: clamp(2.5rem, 5vw, 4.7rem);
+      line-height: 1;
+      margin-bottom: 14px;
+      letter-spacing: -0.04em;
+    }
+
+    .hero h1 span {
+      background: linear-gradient(90deg, var(--accent), #a6d8ff 40%, #c8b0ff 100%);
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
+    }
+
+    .hero p {
+      color: var(--muted);
+      font-size: 1.05rem;
+      max-width: 60ch;
+      margin-bottom: 24px;
+    }
+
+    .hero-actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 14px;
+      margin-bottom: 24px;
+    }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+      padding: 13px 18px;
+      border-radius: 14px;
+      border: 1px solid transparent;
+      font-weight: 700;
+      cursor: pointer;
+      transition: transform 0.2s ease, box-shadow 0.2s ease, border-color 0.2s ease, background 0.2s ease;
+    }
+
+    .btn:hover {
+      transform: translateY(-2px);
+    }
+
+    .btn-primary {
+      background: linear-gradient(135deg, rgba(88,196,255,0.22), rgba(138,91,255,0.24));
+      border-color: var(--line-2);
+      color: var(--text);
+      box-shadow: 0 10px 30px rgba(88, 196, 255, 0.15);
+    }
+
+    .btn-secondary {
+      background: rgba(255,255,255,0.02);
+      border-color: rgba(255,255,255,0.08);
+      color: var(--text);
+    }
+
+    .hero-stats {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 14px;
+      margin-top: 20px;
+    }
+
+    .stat {
+      padding: 16px;
+      border: 1px solid rgba(255,255,255,0.06);
+      border-radius: 16px;
+      background: rgba(255,255,255,0.02);
+    }
+
+    .stat strong {
+      display: block;
+      font-size: 1.25rem;
+      margin-bottom: 6px;
+      color: var(--text);
+    }
+
+    .stat span {
+      color: var(--muted);
+      font-size: 0.92rem;
+    }
+
+    .hero-side {
+      padding: 24px;
+      display: grid;
+      gap: 18px;
+      align-content: start;
+    }
+
+    .profile-shell {
+      position: relative;
+      border-radius: 24px;
+      border: 1px solid var(--line);
+      background: linear-gradient(180deg, rgba(88,196,255,0.05), rgba(255,255,255,0.02));
+      min-height: 360px;
+      overflow: hidden;
+      display: grid;
+      place-items: center;
+      isolation: isolate;
+    }
+
+    .profile-shell::before,
+    .profile-shell::after {
+      content: "";
+      position: absolute;
+      border-radius: 50%;
+      filter: blur(20px);
+      opacity: 0.32;
+      z-index: -1;
+    }
+
+    .profile-shell::before {
+      width: 180px;
+      height: 180px;
+      background: var(--accent);
+      top: 20px;
+      right: 12px;
+    }
+
+    .profile-shell::after {
+      width: 140px;
+      height: 140px;
+      background: var(--accent-2);
+      bottom: 26px;
+      left: 18px;
+    }
+
+    .profile-card {
+      width: min(100%, 280px);
+      aspect-ratio: 0.88;
+      border-radius: 24px;
+      border: 1px solid rgba(255,255,255,0.08);
+      background:
+        linear-gradient(180deg, rgba(255,255,255,0.06), rgba(255,255,255,0.02)),
+        radial-gradient(circle at top, rgba(88,196,255,0.12), transparent 55%);
+      box-shadow: 0 30px 60px rgba(0,0,0,0.35);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      padding: 24px;
+    }
+
+    .profile-card img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      border-radius: 18px;
+      display: none;
+    }
+
+    .profile-placeholder {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+      align-items: center;
+      justify-content: center;
+      color: var(--muted);
+    }
+
+    .profile-placeholder .avatar-ring {
+      width: 88px;
+      height: 88px;
+      border-radius: 50%;
+      border: 1px solid var(--line-2);
+      display: grid;
+      place-items: center;
+      font-size: 1.6rem;
+      color: var(--accent);
+      background: rgba(88,196,255,0.08);
+    }
+
+    .tiny-grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 14px;
+    }
+
+    .tiny-card {
+      padding: 16px;
+      border-radius: 18px;
+      border: 1px solid rgba(255,255,255,0.07);
+      background: rgba(255,255,255,0.025);
+    }
+
+    .tiny-card .label {
+      display: block;
+      color: var(--muted);
+      font-size: 0.8rem;
+      margin-bottom: 5px;
+    }
+
+    .tiny-card strong {
+      font-size: 1rem;
+    }
+
+    section {
+      padding: 32px 0;
+    }
+
+    .section-title {
+      display: flex;
+      justify-content: space-between;
+      align-items: end;
+      gap: 16px;
+      margin-bottom: 18px;
+    }
+
+    .section-title h2 {
+      font-size: clamp(1.8rem, 2vw, 2.5rem);
+      letter-spacing: -0.03em;
+    }
+
+    .section-title p {
+      color: var(--muted);
+      max-width: 65ch;
+    }
+
+    .grid-3,
+    .grid-2,
+    .timeline,
+    .projects-grid,
+    .contact-grid,
+    .skills-grid {
+      display: grid;
+      gap: 18px;
+    }
+
+    .grid-3,
+    .projects-grid,
+    .skills-grid {
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+    }
+
+    .grid-2,
+    .contact-grid,
+    .timeline {
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+
+    .card {
+      padding: 24px;
+      background: var(--panel);
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      box-shadow: var(--shadow);
+      position: relative;
+      overflow: hidden;
+      transition: transform 0.25s ease, border-color 0.25s ease, box-shadow 0.25s ease;
+    }
+
+    .card:hover {
+      transform: translateY(-6px);
+      border-color: rgba(88, 196, 255, 0.3);
+      box-shadow: 0 20px 70px rgba(0, 0, 0, 0.45);
+    }
+
+    .card h3 {
+      margin-bottom: 8px;
+      font-size: 1.15rem;
+    }
+
+    .card p,
+    .card li {
+      color: var(--muted);
+    }
+
+    .tag-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-top: 14px;
+    }
+
+    .tag {
+      font-size: 0.84rem;
+      padding: 7px 10px;
+      border-radius: 999px;
+      border: 1px solid rgba(255,255,255,0.08);
+      background: rgba(255,255,255,0.03);
+      color: #d7e7f8;
+    }
+
+    .glow-line {
+      position: absolute;
+      inset: auto 0 0 0;
+      height: 2px;
+      background: linear-gradient(90deg, transparent, rgba(88,196,255,0.75), transparent);
+      opacity: 0.6;
+    }
+
+    .project-card {
+      display: flex;
+      flex-direction: column;
+      gap: 14px;
+      min-height: 280px;
+    }
+
+    .project-top {
+      display: flex;
+      justify-content: space-between;
+      align-items: start;
+      gap: 12px;
+    }
+
+    .badge {
+      font-size: 0.76rem;
+      font-weight: 700;
+      color: var(--accent);
+      border: 1px solid rgba(88,196,255,0.2);
+      background: rgba(88,196,255,0.08);
+      padding: 8px 10px;
+      border-radius: 999px;
+      white-space: nowrap;
+    }
+
+    .link-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin-top: auto;
+    }
+
+    .text-link {
+      color: var(--text);
+      font-weight: 700;
+      font-size: 0.95rem;
+      opacity: 0.9;
+    }
+
+    .text-link:hover {
+      color: var(--accent);
+    }
+
+    .timeline-card .meta,
+    .edu-card .meta,
+    .cert-card .meta {
+      color: var(--accent);
+      font-size: 0.88rem;
+      font-weight: 700;
+      margin-bottom: 8px;
+    }
+
+    .timeline-card ul,
+    .edu-card ul,
+    .cert-card ul {
+      padding-left: 18px;
+      display: grid;
+      gap: 8px;
+      margin-top: 12px;
+    }
+
+    .skills-block {
+      padding: 22px;
+      border-radius: var(--radius);
+      background: var(--panel);
+      border: 1px solid var(--line);
+      box-shadow: var(--shadow);
+    }
+
+    .skills-block h3 {
+      margin-bottom: 14px;
+    }
+
+    .skill-list {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+    }
+
+    .skill {
+      padding: 9px 12px;
+      border-radius: 12px;
+      background: rgba(255,255,255,0.03);
+      border: 1px solid rgba(255,255,255,0.08);
+      color: var(--text);
+      font-size: 0.92rem;
+    }
+
+    .contact-card {
+      min-height: 100%;
+    }
+
+    .contact-list {
+      list-style: none;
+      display: grid;
+      gap: 14px;
+      margin-top: 12px;
+    }
+
+    .contact-list a {
+      color: var(--text);
+      word-break: break-word;
+    }
+
+    .contact-list small {
+      color: var(--muted);
+      display: block;
+      margin-bottom: 4px;
+    }
+
+    .footer {
+      padding: 30px 0 44px;
+      color: var(--muted);
+      text-align: center;
+    }
+
+    .reveal {
+      opacity: 0;
+      transform: translateY(20px);
+      transition: opacity 0.7s ease, transform 0.7s ease;
+    }
+
+    .reveal.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    .cursor-glow {
+      position: fixed;
+      width: 180px;
+      height: 180px;
+      border-radius: 50%;
+      background: radial-gradient(circle, rgba(88,196,255,0.12), transparent 65%);
+      pointer-events: none;
+      transform: translate(-50%, -50%);
+      z-index: -1;
+      filter: blur(8px);
+      opacity: 0;
+      transition: opacity 0.2s ease;
+    }
+
+    @media (max-width: 1024px) {
+      .hero-grid,
+      .grid-3,
+      .projects-grid,
+      .skills-grid,
+      .grid-2,
+      .contact-grid,
+      .timeline {
+        grid-template-columns: 1fr;
+      }
+
+      .hero-stats {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    @media (max-width: 740px) {
+      .topbar-inner {
+        flex-direction: column;
+        align-items: start;
+      }
+
+      nav ul {
+        gap: 12px;
+      }
+
+      .hero {
+        padding-top: 42px;
+      }
+
+      .hero-copy,
+      .hero-side,
+      .card,
+      .skills-block {
+        padding: 20px;
+      }
+
+      .hero h1 {
+        font-size: 2.5rem;
+      }
+    }
+  </style>
 </head>
 <body>
+  <div class="orb one"></div>
+  <div class="orb two"></div>
+  <div class="cursor-glow" id="cursorGlow"></div>
 
-<nav>
-  <h1>Tyler Argent</h1>
-  <div>
-    <a href="#projects">Projects</a>
-    <a href="#experience">Experience</a>
-    <a href="#education">Education</a>
-    <a href="#skills">Skills</a>
-    <a href="#contact">Contact</a>
-  </div>
-</nav>
+  <header class="topbar">
+    <div class="container topbar-inner">
+      <a href="#home" class="brand">
+        <div class="brand-mark">TA</div>
+        <div>
+          <div>Tyler Argent</div>
+        </div>
+      </a>
+      <nav>
+        <ul>
+          <li><a href="#about">About</a></li>
+          <li><a href="#projects">Projects</a></li>
+          <li><a href="#experience">Experience</a></li>
+          <li><a href="#skills">Skills</a></li>
+          <li><a href="#contact" class="nav-cta">Contact</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
 
-<section class="hero">
-  <h2>Cybersecurity Analyst (DFIR Focus)</h2>
-  <p>
-    IT Support Analyst with hands-on experience in log analysis, cloud security,
-    and compliance. Focused on incident response, detection, and security operations.
-  </p>
+  <main id="home">
+    <section class="hero">
+      <div class="container hero-grid">
+        <div class="panel hero-copy reveal">
+          <div class="eyebrow">Available for IT and cybersecurity opportunities</div>
+          <h1>IT Support + <span>Cybersecurity</span></h1>
+          <p>
+            I’m Tyler Argent, an IT Support Analyst with hands-on experience across endpoint support, Microsoft 365,
+            Azure and AWS access reviews, FedRAMP-aligned compliance work, identity and access validation, and homelab security projects.
+            I build practical solutions, document clearly, and care about making technology secure and usable.
+          </p>
+          <div class="hero-actions">
+            <a class="btn btn-primary" href="#projects">View Projects</a>
+            <a class="btn btn-secondary" href="#contact">Get In Touch</a>
+            <a class="btn btn-secondary" href="Tyler_Argent_Resume.pdf" target="_blank" rel="noopener">Download Resume</a>
+          </div>
+          <div class="hero-stats">
+            <div class="stat">
+              <strong>2+ Years</strong>
+              <span>IT support, security, and compliance experience</span>
+            </div>
+            <div class="stat">
+              <strong>B.A.S.</strong>
+              <span>Degree with security-focused coursework</span>
+            </div>
+            <div class="stat">
+              <strong>Hands-On</strong>
+              <span>Portfolio projects, homelab, and audit automation</span>
+            </div>
+          </div>
+        </div>
 
-  <div class="buttons">
-    <a href="https://github.com/tyler-silver" target="_blank">GitHub</a>
-    <a href="https://www.linkedin.com/in/tyler-a-190a2a264/" target="_blank">LinkedIn</a>
-  </div>
-</section>
+        <aside class="panel hero-side reveal">
+          <div class="profile-shell">
+            <div class="profile-card">
+              <img id="profileImage" src="assets/profile.jpg" alt="Tyler Argent profile photo" onerror="this.style.display='none'; document.getElementById('profilePlaceholder').style.display='flex';" />
+              <div class="profile-placeholder" id="profilePlaceholder">
+                <div class="avatar-ring">TA</div>
+                <strong>Add your headshot</strong>
+                <span style="font-size:0.92rem; max-width: 18ch;">Upload a photo as <code>assets/profile.jpg</code> and it will appear here automatically.</span>
+              </div>
+            </div>
+          </div>
+          <div class="tiny-grid">
+            <div class="tiny-card">
+              <span class="label">Current Role</span>
+              <strong>IT Support Analyst</strong>
+            </div>
+            <div class="tiny-card">
+              <span class="label">Location</span>
+              <strong>Denver, Colorado</strong>
+            </div>
+            <div class="tiny-card">
+              <span class="label">Focus</span>
+              <strong>SOC / DFIR Growth</strong>
+            </div>
+            <div class="tiny-card">
+              <span class="label">Core Strength</span>
+              <strong>Practical Security Ops</strong>
+            </div>
+          </div>
+        </aside>
+      </div>
+    </section>
 
-<section id="projects">
-  <h2>Projects</h2>
+    <section id="about">
+      <div class="container">
+        <div class="section-title reveal">
+          <div>
+            <h2>About Me</h2>
+          </div>
+          <p>
+            My background sits at the intersection of IT support, compliance, and security operations. I’ve supported end users in fast-paced environments,
+            handled identity and access validation work, contributed to FedRAMP and VA continuous monitoring efforts, and built portfolio projects to deepen my defensive security skill set.
+          </p>
+        </div>
+        <div class="grid-3">
+          <article class="card reveal">
+            <h3>Support That Actually Solves Problems</h3>
+            <p>
+              I work directly with users, troubleshoot endpoint and application issues, document clearly, and keep things moving without making the process harder than it needs to be.
+            </p>
+            <div class="glow-line"></div>
+          </article>
+          <article class="card reveal">
+            <h3>Security and Compliance Exposure</h3>
+            <p>
+              I’ve worked with access reviews, Azure sign-in logs, AWS IAM validation, POA&M tracking, monthly and quarterly audit work, and FedRAMP-aligned security tasks.
+            </p>
+            <div class="glow-line"></div>
+          </article>
+          <article class="card reveal">
+            <h3>Built for Growth</h3>
+            <p>
+              I’m actively building toward SOC and DFIR roles through hands-on labs, homelab projects, log analysis workflows, and portfolio work that proves what I can do.
+            </p>
+            <div class="glow-line"></div>
+          </article>
+        </div>
+      </div>
+    </section>
 
-  <div class="card">
-    <h3>WireGuard VPN + Pi-hole DNS Filtering</h3>
-    <p>Secure VPN with DNS filtering to simulate enterprise network controls.</p>
-  </div>
+    <section id="projects">
+      <div class="container">
+        <div class="section-title reveal">
+          <div>
+            <h2>Featured Projects</h2>
+          </div>
+          <p>
+            These are the projects that best show my technical range, practical security mindset, and ability to take something from idea to usable outcome.
+          </p>
+        </div>
+        <div class="projects-grid">
+          <article class="card project-card reveal">
+            <div class="project-top">
+              <h3>Windows Log Monitoring and Detection Lab</h3>
+              <span class="badge">SOC / DFIR</span>
+            </div>
+            <p>
+              Portfolio-ready detection lab built around Windows event logs, Sysmon telemetry, and SIEM visibility. Designed to simulate realistic attack activity and show how logs can be collected, analyzed, and turned into useful detections.
+            </p>
+            <div class="tag-row">
+              <span class="tag">Windows VM</span>
+              <span class="tag">Sysmon</span>
+              <span class="tag">Splunk</span>
+              <span class="tag">Event Analysis</span>
+            </div>
+            <div class="link-row">
+              <a class="text-link" href="#contact">Add GitHub Repo</a>
+            </div>
+          </article>
 
-  <div class="card">
-    <h3>Self-Hosted Nextcloud Server</h3>
-    <p>Secure cloud environment with authentication and backend optimization.</p>
-  </div>
+          <article class="card project-card reveal">
+            <div class="project-top">
+              <h3>Nextcloud + VPN + Private Network Homelab</h3>
+              <span class="badge">Homelab</span>
+            </div>
+            <p>
+              Self-hosted lab using Raspberry Pi infrastructure for private cloud storage, VPN access, and network utility services. Built to explore secure remote access, self-hosting, and practical network administration.
+            </p>
+            <div class="tag-row">
+              <span class="tag">Raspberry Pi</span>
+              <span class="tag">WireGuard</span>
+              <span class="tag">Nextcloud</span>
+              <span class="tag">Pi-hole</span>
+            </div>
+            <div class="link-row">
+              <a class="text-link" href="#contact">Add GitHub Repo</a>
+            </div>
+          </article>
 
-  <div class="card highlight">
-    <h3>Windows Log Monitoring & Threat Detection Lab (In Progress)</h3>
-    <p>Building SIEM-based detection pipeline for real-world attack scenarios.</p>
-  </div>
+          <article class="card project-card reveal">
+            <div class="project-top">
+              <h3>C2M2 Cybersecurity Assessment Proposal</h3>
+              <span class="badge">Governance</span>
+            </div>
+            <p>
+              Developed a structured plan for conducting a C2M2 cybersecurity maturity assessment in a small healthcare environment, including execution approach, reporting structure, and policy improvement direction.
+            </p>
+            <div class="tag-row">
+              <span class="tag">C2M2</span>
+              <span class="tag">Risk Review</span>
+              <span class="tag">Healthcare IT</span>
+              <span class="tag">Policy Alignment</span>
+            </div>
+            <div class="link-row">
+              <a class="text-link" href="#contact">Add Project Link</a>
+            </div>
+          </article>
 
-</section>
+          <article class="card project-card reveal">
+            <div class="project-top">
+              <h3>Safeware Audit Reporting Automation</h3>
+              <span class="badge">Automation</span>
+            </div>
+            <p>
+              Used Python and R-based workflows to generate monthly and quarterly audit deliverables including user activity counts, summaries, histograms, and evidence packages for compliance documentation.
+            </p>
+            <div class="tag-row">
+              <span class="tag">Python</span>
+              <span class="tag">R</span>
+              <span class="tag">CSV Reporting</span>
+              <span class="tag">Audit Evidence</span>
+            </div>
+            <div class="link-row">
+              <a class="text-link" href="#contact">Add Samples</a>
+            </div>
+          </article>
 
-<section id="experience">
-  <h2>Experience</h2>
+          <article class="card project-card reveal">
+            <div class="project-top">
+              <h3>FedRAMP POA&amp;M Tracking and Continuous Monitoring</h3>
+              <span class="badge">Compliance Ops</span>
+            </div>
+            <p>
+              Supported ongoing security compliance efforts through POA&amp;M updates, vulnerability remediation tracking, evidence collection, audit coordination, and recurring monitoring deliverables aligned to federal requirements.
+            </p>
+            <div class="tag-row">
+              <span class="tag">FedRAMP</span>
+              <span class="tag">POA&amp;M</span>
+              <span class="tag">ConMon</span>
+              <span class="tag">VA</span>
+            </div>
+            <div class="link-row">
+              <a class="text-link" href="#contact">Add Writeup</a>
+            </div>
+          </article>
 
-  <div class="card">
-    <h3>IT Support Analyst | Spencer Fane LLP</h3>
-    <ul>
-      <li>Analyzed Azure Entra ID sign-in logs for authentication anomalies</li>
-      <li>Performed AWS IAM audits (MFA, credential security)</li>
-      <li>Supported FedRAMP compliance and POA&M remediation</li>
-    </ul>
-  </div>
+          <article class="card project-card reveal">
+            <div class="project-top">
+              <h3>Cybersecurity Portfolio Website</h3>
+              <span class="badge">Personal Brand</span>
+            </div>
+            <p>
+              Designed and deployed a GitHub Pages website to present technical experience, security projects, and career direction in a cleaner and more recruiter-friendly format than a plain resume alone.
+            </p>
+            <div class="tag-row">
+              <span class="tag">GitHub Pages</span>
+              <span class="tag">HTML</span>
+              <span class="tag">CSS</span>
+              <span class="tag">JavaScript</span>
+            </div>
+            <div class="link-row">
+              <a class="text-link" href="#home">You’re Looking At It</a>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
 
-  <div class="card">
-    <h3>IT Program Coordinator (Security) | HB Healthcare Safety</h3>
-    <ul>
-      <li>Managed POA&M and FedRAMP compliance tracking</li>
-      <li>Performed Azure access reviews and AWS IAM audits</li>
-      <li>Generated audit reports using Python</li>
-    </ul>
-  </div>
+    <section id="experience">
+      <div class="container">
+        <div class="section-title reveal">
+          <div>
+            <h2>Experience</h2>
+          </div>
+          <p>
+            Professional roles spanning end-user support, legal and healthcare IT, and security compliance operations.
+          </p>
+        </div>
+        <div class="timeline">
+          <article class="card timeline-card reveal">
+            <div class="meta">Spencer Fane LLP • February 2026 to Present</div>
+            <h3>Information Technology Support Analyst</h3>
+            <ul>
+              <li>Provide Level 2 IT support in a legal environment, troubleshooting user issues across hardware, software, Microsoft 365, Outlook, document workflows, and conferencing tools.</li>
+              <li>Support firm users in a fast-paced setting while documenting tickets clearly and coordinating with broader infrastructure teams when escalation is needed.</li>
+              <li>Handle practical endpoint and productivity issues with a focus on clarity, speed, and a solid user experience.</li>
+            </ul>
+          </article>
 
-  <div class="card">
-    <h3>IT Support Specialist | Voyage Healthcare</h3>
-    <ul>
-      <li>Supported 300+ users across endpoints and systems</li>
-      <li>Handled VPN, AD, and Microsoft 365 troubleshooting</li>
-      <li>Gained foundational experience in security + infrastructure</li>
-    </ul>
-  </div>
+          <article class="card timeline-card reveal">
+            <div class="meta">HB Healthcare Safety • 2025 to Present</div>
+            <h3>IT Program Coordinator</h3>
+            <ul>
+              <li>Support FedRAMP and VA compliance operations including POA&amp;M management, continuous monitoring deliverables, and 3PAO-related audit support.</li>
+              <li>Participate in recurring access validation, evidence gathering, and action tracking across Azure, AWS, Jira, SharePoint, and related audit systems.</li>
+              <li>Contribute to security and compliance workflows that tie technical evidence back to policy and regulatory requirements.</li>
+            </ul>
+          </article>
 
-  <div class="card">
-    <h3>IT Security Intern | HB Healthcare Safety</h3>
-    <ul>
-      <li>Built Intune policies and compliance configurations</li>
-      <li>Created device audit procedures</li>
-      <li>Improved endpoint security posture</li>
-    </ul>
-  </div>
+          <article class="card timeline-card reveal">
+            <div class="meta">Voyage Healthcare • August 2024 to February 2026</div>
+            <h3>IT Support Specialist</h3>
+            <ul>
+              <li>Delivered end-user support in a healthcare environment across laptops, printers, Microsoft tools, Fortinet VPN, Active Directory, and internal clinical systems.</li>
+              <li>Imaged devices, set up new users, tracked inventory, and resolved day-to-day operational issues across both office and clinic environments.</li>
+              <li>Worked closely with a small IT team, gaining hands-on exposure to real-world troubleshooting and basic security-aware support practices.</li>
+            </ul>
+          </article>
 
-</section>
+          <article class="card timeline-card reveal">
+            <div class="meta">HB Healthcare Safety • Summer 2023</div>
+            <h3>Remote IT Security Intern</h3>
+            <ul>
+              <li>Supported security-focused tasks under leadership guidance and gained early exposure to compliance, technical documentation, and security operations concepts.</li>
+              <li>Built foundational experience that later helped support more advanced compliance and security coordination work.</li>
+            </ul>
+          </article>
+        </div>
+      </div>
+    </section>
 
-<section id="education">
-  <h2>Education</h2>
+    <section id="skills">
+      <div class="container">
+        <div class="section-title reveal">
+          <div>
+            <h2>Skills and Tools</h2>
+          </div>
+          <p>
+            No fake progress bars. Just the stuff I’ve actually used or built with.
+          </p>
+        </div>
+        <div class="skills-grid">
+          <div class="skills-block reveal">
+            <h3>Security and Compliance</h3>
+            <div class="skill-list">
+              <span class="skill">FedRAMP</span>
+              <span class="skill">POA&amp;M</span>
+              <span class="skill">Continuous Monitoring</span>
+              <span class="skill">Audit Support</span>
+              <span class="skill">IAM Validation</span>
+              <span class="skill">Azure Access Reviews</span>
+              <span class="skill">AWS IAM Reviews</span>
+              <span class="skill">Risk Documentation</span>
+            </div>
+          </div>
 
-  <div class="card">
-    <h3>University of Minnesota</h3>
-    <p>BASc – IT Infrastructure (Security Focus)</p>
-  </div>
+          <div class="skills-block reveal">
+            <h3>Systems and Platforms</h3>
+            <div class="skill-list">
+              <span class="skill">Windows</span>
+              <span class="skill">Linux</span>
+              <span class="skill">Microsoft 365</span>
+              <span class="skill">Active Directory</span>
+              <span class="skill">Azure / Entra ID</span>
+              <span class="skill">AWS</span>
+              <span class="skill">GitHub</span>
+              <span class="skill">Raspberry Pi</span>
+            </div>
+          </div>
 
-  <div class="card">
-    <h3>Anoka-Ramsey Community College</h3>
-    <p>Associate of Arts</p>
-  </div>
+          <div class="skills-block reveal">
+            <h3>Support and Operations</h3>
+            <div class="skill-list">
+              <span class="skill">Troubleshooting</span>
+              <span class="skill">Endpoint Support</span>
+              <span class="skill">User Provisioning</span>
+              <span class="skill">Documentation</span>
+              <span class="skill">Jira</span>
+              <span class="skill">SharePoint</span>
+              <span class="skill">Teams</span>
+              <span class="skill">ServiceNow</span>
+            </div>
+          </div>
 
-</section>
+          <div class="skills-block reveal">
+            <h3>Monitoring and Analysis</h3>
+            <div class="skill-list">
+              <span class="skill">Splunk</span>
+              <span class="skill">Windows Event Logs</span>
+              <span class="skill">Sysmon</span>
+              <span class="skill">Log Analysis</span>
+              <span class="skill">Incident Investigation Basics</span>
+            </div>
+          </div>
 
-<section id="skills">
-  <h2>Skills</h2>
+          <div class="skills-block reveal">
+            <h3>Scripting and Data</h3>
+            <div class="skill-list">
+              <span class="skill">Python</span>
+              <span class="skill">R</span>
+              <span class="skill">CSV Processing</span>
+              <span class="skill">Report Automation</span>
+              <span class="skill">Data Validation</span>
+            </div>
+          </div>
 
-  <div class="skills">
-    <span>Log Analysis</span>
-    <span>Azure Entra ID</span>
-    <span>AWS IAM</span>
-    <span>FedRAMP</span>
-    <span>VPN</span>
-    <span>Linux</span>
-    <span>SIEM (Learning)</span>
-  </div>
-</section>
+          <div class="skills-block reveal">
+            <h3>Current Career Direction</h3>
+            <div class="skill-list">
+              <span class="skill">SOC Analyst Track</span>
+              <span class="skill">DFIR Labs</span>
+              <span class="skill">Practical Security Projects</span>
+              <span class="skill">Cloud and Identity Security</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
 
-<section id="contact">
-  <h2>Contact</h2>
+    <section id="education">
+      <div class="container">
+        <div class="section-title reveal">
+          <div>
+            <h2>Education and Certifications</h2>
+          </div>
+          <p>
+            Academic background and certs that support the technical and security side of my work.
+          </p>
+        </div>
+        <div class="grid-2">
+          <article class="card edu-card reveal">
+            <div class="meta">University of Minnesota</div>
+            <h3>Bachelor of Applied Science</h3>
+            <ul>
+              <li>Completed degree with an emphasis on technology and security-related coursework.</li>
+              <li>Built academic and project foundations that supported my move into security and compliance-focused work.</li>
+            </ul>
+          </article>
 
-  <p>Reach out via LinkedIn or GitHub.</p>
+          <article class="card cert-card reveal">
+            <div class="meta">Certifications</div>
+            <h3>ISC2 Certified in Cybersecurity (CC)</h3>
+            <ul>
+              <li>Foundational certification covering security principles, risk, access control, and security operations concepts.</li>
+              <li>Add more certs here as you earn them.</li>
+            </ul>
+          </article>
+        </div>
+      </div>
+    </section>
 
-  <div class="buttons">
-    <a href="https://www.linkedin.com/in/tyler-a-190a2a264/" target="_blank">Message Me</a>
-  </div>
-</section>
+    <section id="contact">
+      <div class="container">
+        <div class="section-title reveal">
+          <div>
+            <h2>Contact</h2>
+          </div>
+          <p>
+            The easiest way to reach me is by email or LinkedIn.
+          </p>
+        </div>
+        <div class="contact-grid">
+          <article class="card contact-card reveal">
+            <h3>Let’s Connect</h3>
+            <p>
+              I’m interested in IT, security operations, compliance-adjacent roles, and opportunities that let me keep building real technical depth.
+            </p>
+            <ul class="contact-list">
+              <li>
+                <small>Email</small>
+                <a href="mailto:tyler.argentwrk@gmail.com">tyler.argentwrk@gmail.com</a>
+              </li>
+              <li>
+                <small>Phone</small>
+                <a href="tel:6513929344">651-392-9344</a>
+              </li>
+              <li>
+                <small>LinkedIn</small>
+                <a href="https://www.linkedin.com/in/tyler-a-190a2a264/" target="_blank" rel="noopener">linkedin.com/in/tyler-a-190a2a264</a>
+              </li>
+              <li>
+                <small>GitHub Pages</small>
+                <a href="#home">Replace this with your live GitHub Pages URL</a>
+              </li>
+            </ul>
+          </article>
 
+          <article class="card reveal">
+            <h3>Before You Publish</h3>
+            <p>
+              Swap in your real resume PDF, add your GitHub project links, and optionally upload a headshot. The site works without a photo, but a good one makes the page feel more legit.
+            </p>
+            <div class="tag-row">
+              <span class="tag">Add assets/profile.jpg</span>
+              <span class="tag">Add Tyler_Argent_Resume.pdf</span>
+              <span class="tag">Replace project links</span>
+              <span class="tag">Push to GitHub</span>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer container">
+    <p>Built for GitHub Pages. Designed to be clean, fast, and easy to maintain.</p>
+  </footer>
+
+  <script>
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('visible');
+        }
+      });
+    }, { threshold: 0.12 });
+
+    document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+
+    const sections = document.querySelectorAll('main section[id]');
+    const navLinks = document.querySelectorAll('nav a');
+
+    const setActiveLink = () => {
+      let current = 'home';
+      sections.forEach(section => {
+        const top = window.scrollY;
+        const offset = section.offsetTop - 120;
+        const height = section.offsetHeight;
+        if (top >= offset && top < offset + height) {
+          current = section.getAttribute('id');
+        }
+      });
+
+      navLinks.forEach(link => {
+        link.classList.toggle('active', link.getAttribute('href') === `#${current}`);
+      });
+    };
+
+    window.addEventListener('scroll', setActiveLink);
+    setActiveLink();
+
+    const glow = document.getElementById('cursorGlow');
+    window.addEventListener('mousemove', (e) => {
+      glow.style.opacity = '1';
+      glow.style.left = `${e.clientX}px`;
+      glow.style.top = `${e.clientY}px`;
+    });
+
+    window.addEventListener('mouseleave', () => {
+      glow.style.opacity = '0';
+    });
+  </script>
 </body>
 </html>
